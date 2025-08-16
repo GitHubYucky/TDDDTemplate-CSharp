@@ -1,12 +1,55 @@
+# ================== Git Commit Template (.gitmessage.txt) ==================
+# 使い方：
+# 1) 最上段に「type(scope): summary」を書く（命令形・50字以内）。
+# 2) 下の WHY/WHAT/HOW/IMPACT/NOTE を必要な分だけ埋める（不要なら削除OK）。
+# 3) 破壊的変更がある場合は "BREAKING CHANGE:" を必ず追記。
+# 4) 課題連携は Refs/Closes を使用（例: Refs: #12, Closes: #34）。
+#
+# よく使う type: feat / fix / refactor / test / docs / style / perf / build / ci / chore / revert
+# よく使う scope: domain / infra / winform / viewmodel / repo / build / ci / docs / test
+# ==========================================================================
+
 # <type>(<scope>): <summary>
+# 例: feat(domain): TodoエンティティとITodoRepositoryを追加
+# 例: fix(infra): InMemoryRepoで重複ID登録を防止
 
-# WHY: なぜ変更が必要？(背景/課題)
-# WHAT: 何を変えた？(ポイントを箇条書きで)
-# HOW: どう実装した？(対案・採用理由があれば)
-# IMPACT: 影響範囲/互換性/移行
-# NOTE: 残タスク/リスク/フォローアップ
+# WHY:
+# - なぜ必要？（背景/課題）
+# 例: WinFormsに業務ロジックが混在し、ユニットテストが困難だったため
 
-# BREAKING CHANGE: ここに破壊的変更の説明
+# WHAT:
+# - 何を変えた？（箇条書き）
+# 例:
+# - Todo(Id, Title, IsDone) を追加
+# - ITodoRepository(Get/Add/Update/List) を定義
+# - Views と ViewModels を分離
 
-# Refs: #issue
-# Closes: #issue
+# HOW:
+# - どう実装した？（採用理由/代替案があれば）
+# 例:
+# - バリデーションをエンティティに集約（空文字は ArgumentException）
+# - BindingList + BindingSource で MVVM 風のデータバインド
+# - 代替案は ObservableCollection だが WinForms 互換性で見送り
+
+# IMPACT:
+# - 影響範囲・互換性・移行手順（なければ「なし」）
+# 例:
+# - 互換性: なし（UIコードのみ変更）
+# - 移行: 既存Titleは Trim して保存
+
+# NOTE:
+# - 残タスク/リスク/フォローアップ
+# 例:
+# - 次コミットで EF Core 実装を追加
+# - 削除機能(Remove)は別PR
+
+# BREAKING CHANGE:
+# - 破壊的変更の内容（API互換性など）。なければ削除
+# 例:
+# - Todo コンストラクタを (Guid, TodoTitle) に変更。呼び出し側の修正が必要
+
+# Refs:
+# 例: Refs: #12, JIRA-123
+
+# Closes:
+# 例: Closes: #34
