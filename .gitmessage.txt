@@ -1,0 +1,12 @@
+# <type>(<scope>): <summary>
+
+# WHY: なぜ変更が必要？(背景/課題)
+# WHAT: 何を変えた？(ポイントを箇条書きで)
+# HOW: どう実装した？(対案・採用理由があれば)
+# IMPACT: 影響範囲/互換性/移行
+# NOTE: 残タスク/リスク/フォローアップ
+
+# BREAKING CHANGE: ここに破壊的変更の説明
+
+# Refs: #issue
+# Closes: #issue
